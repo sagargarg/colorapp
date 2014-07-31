@@ -2,8 +2,12 @@ package com.example.colorapp;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 
 public class MainActivity extends Activity {
@@ -12,6 +16,25 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
+        setButton();
+    }
+    
+    private void setButton() {
+    	// 1. Get a reference to the button
+    	Button startButton = (Button) findViewById(R.id.buttonStart);
+    	
+    	// 2. Set the click listener to run my code.
+    	View.OnClickListener myListener = new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// Here we have to start the game.
+				Log.i("StartButton", "Click successful");
+				Toast.makeText(MainActivity.this, "Click", Toast.LENGTH_LONG).show();
+			}
+    	};
+    	startButton.setOnClickListener(myListener);
     }
 
 
